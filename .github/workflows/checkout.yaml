@@ -1,0 +1,17 @@
+name : checkout
+on : workflow_dispatch
+
+jobs: 
+  no-checkout-job :
+    runs-on : ubuntu-latest
+    steps :
+      - name : Checkout repository
+        run : cat README.md
+
+  checkout-job :
+    runs-on : ubuntu-latest
+    steps :
+      - name : Checkout repository
+        uses : actions/checkout@v4
+      - name : Verify checkout
+        run : cat README.md
