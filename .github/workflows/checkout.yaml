@@ -15,3 +15,12 @@ jobs:
         uses : actions/checkout@v4
       - name : Verify checkout
         run : cat README.md
+
+  context:
+    runs-on: ubuntu-latest
+    steps:
+      - name: github context
+        uses: echo ${{ toJson(github) }}
+ 
+
+
