@@ -28,11 +28,9 @@ jobs:
     steps:
       - name: Send message to Slack
         uses: slackapi/slack-github-action@v2.1.1
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         with:
+          webhook: ${{ secrets.SLACK_WEBHOOK_URL }}    
+          webhook-type: incoming-webhook            
           payload: |
-            {
-              "text": "Checkout workflow executed successfully!"
-            }
+            text: "Checkout workflow executed"
 
