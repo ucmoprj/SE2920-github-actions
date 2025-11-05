@@ -23,3 +23,16 @@ jobs:
         run: echo '${{ toJson(github) }}' 
 
 
+  slack:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send message to Slack
+        uses: slackapi/slack-github-action@v2.1.1
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        with:
+          payload: |
+            {
+              "text": "Checkout workflow executed successfully!"
+            }
+
