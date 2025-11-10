@@ -6,7 +6,7 @@ on:
   #   branches: [ main, master ]
   # pull_request:
   #   branches: [ main, master ]
-  
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -37,3 +37,10 @@ jobs:
       - name: Run tests
         working-directory: SpringReact
         run: ./gradlew clean test --no-daemon
+
+      - name: Upload test reports (HTML)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: junit-html-report
+          path: SpringReact/build/reports/tests/test
